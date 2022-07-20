@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Input Fields</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css' media="all">
+    <script src='main.js'></script>
+</head>
+<body>
+    <form>
+        <header class="headerContainer"><h1>HTML 5 Form Input Field</h1></header>
+        <div>
+            <label for="text">Enter Your Name :</label>
+            <input type="text" id="text" name="text" placeholder="Your Name">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="text">Enter Your Password :</label>
+            <input type="password" id="pwd" name="pwd" placeholder="Your Password">
+            <error-output class="pwd-error" for="pwd"></error-output>
+        </div>
+        <div>
+            <label for="text">Enter Your Email id :</label>
+            <input type="email" id="email" name="email" placeholder="Your Email Id">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="text">Enter URL type :</label>
+            <input type="url" id="url" name="url" placeholder="URL">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="number">Number input type :</label>
+            <input type="number" id="number" name="number" placeholder="Number Here">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="text">Enter Mobile number :</label>
+            <input type="text" id="number" name="number" placeholder="Your Mobile Number">
+            <error-output class="number-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="text">Choose a date and time :</label>
+            <input type="datetime-local" id="date" name="date" placeholder="Date and Time">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="text">Enter Your Salary :</label>
+            <input type="range" id="salary" name="salary" min="300000" max="500000" step="100" value="400000">
+            <output class="salary-output" for="salary">400000</output>
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+
+    <script>
+        //For name validation
+        const text=document.querySelector('#text');
+        const textError=document.querySelector('.text-error');
+        text.addEventListener('input',function(){
+            let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if(nameRegex.test(text.value))
+                textError.textContent="";
+            else
+                textError.textContent="Name is Incorrect";    
+        });
+        //for salary validation
+        console.log(text);
+        //for salary validation
+        const salary=document.querySelector('#salary');
+        const output=document.querySelector('.salary-output');
+        output.textContent=salary.value;
+        salary.addEventListener('input',function(){
+            output.textContent=salary.value;
+        });
+        //for password validation
+        const password=document.querySelector('#pwd');
+        const passwordError=document.querySelector('.pwd-error');
+        pwd.addEventListener('input',function(){
+            let passwordRegex=RegExp("^(?=[0-9 A-Z a-z !@#$^&*();:]{8,}$)(?=.*[A-Z]{1,})(?=.*[0-9]{1,})(?=.*[!@#$%^&*();:{1,}).*$])");
+            if(passwordRegex.test(password.value))
+                passwordError.textContent=" ";
+            else
+            passwordError.textContent="Password is Incorrect";    
+        });
+
+        //for mobile number
+        const number=document.querySelector('#number');
+        const numberError=document.querySelector(".number-error");
+        number.addEventListener("input",function(){
+            let numberRegex=RegExp('^(0|91)[\\s][0-9]{10}$');
+            if(numberRegex.test(number.value))
+                numberError.textContent=" ";
+            else
+                numberError.textContent="Mobile number is Incorrect";    
+        });
+        
+    </script>
+</body>
+</html>
